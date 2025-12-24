@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Asencio Research Group — AI Evaluation, Intelligence Analysis, and Legal/Policy Review." />
+  <title>Asencio Research Group</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --text:#e9eefc;
+      --muted:#b8c3e6;
+      --accent:#d4a83f; /* gold */
+      --accent2:#6aa6ff;
+      --border:rgba(233,238,252,.12);
+      --shadow:0 12px 34px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1100px 600px at 20% -10%, rgba(106,166,255,.22), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(212,168,63,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Top Nav */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.72);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .mark{
+      width:40px;height:40px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(212,168,63,.95), rgba(106,166,255,.75));
+      display:grid;place-items:center;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .mark svg{width:22px;height:22px;opacity:.95}
+    .brand .name{display:flex;flex-direction:column;gap:0}
+    .brand .name strong{font-size:14px;letter-spacing:.6px}
+    .brand .name span{font-size:12px;color:var(--muted);letter-spacing:.35px}
+
+    .links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+    .links a{font-size:13px;color:var(--muted)}
+    .links a:hover{color:var(--text)}
+
+    .cta{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(212,168,63,.35);
+      background: rgba(212,168,63,.10);
+      color:var(--text);
+      font-size:13px;
+    }
+    .cta:hover{background: rgba(212,168,63,.16)}
+
+    /* Hero */
+    .hero{padding:64px 0 26px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .panel{
+      background: rgba(17,26,51,.72);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{padding:28px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:12px;color:var(--muted);
+      letter-spacing:.4px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    h1{margin:16px 0 10px;font-size:42px;line-height:1.08;letter-spacing:-.8px}
+    .sub{margin:0;color:var(--muted);font-size:16px;max-width:60ch}
+    .hero-actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(212,168,63,.45);
+      background: linear-gradient(135deg, rgba(212,168,63,.24), rgba(106,166,255,.12));
+    }
+
+    .hero-side{padding:18px}
+    .statgrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .stat{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .stat b{display:block;font-size:13px;letter-spacing:.2px}
+    .stat small{display:block;color:var(--muted);margin-top:4px}
+
+    /* Sections */
+    section{padding:44px 0}
+    .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
+    .sec-head h2{margin:0;font-size:22px;letter-spacing:-.3px}
+    .sec-head p{margin:0;color:var(--muted);max-width:70ch}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      padding:18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(17,26,51,.65);
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+      min-height: 150px;
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(106,166,255,.25);
+      background: rgba(106,166,255,.08);
+      color:var(--text);
+      font-size:12px;
+      margin-bottom:10px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .box{padding:20px}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    li{margin:6px 0}
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    form{display:grid;gap:10px}
+    label{font-size:12px;color:var(--muted)}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline: none;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .note{font-size:12px;color:var(--muted);margin:10px 0 0}
+
+    footer{padding:26px 0 36px;color:var(--muted);border-top:1px solid var(--border)}
+    .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .cards{grid-template-columns: 1fr;}
+      .two{grid-template-columns: 1fr;}
+      .contact{grid-template-columns: 1fr;}
+      h1{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Asencio Research Group home">
+          <div class="mark" aria-hidden="true">
+            <img src="/mnt/data/A_digital_vector_logo_for_\"Asencio_Research_Group\".png" alt="Asencio Research Group Logo" style="width:100%;height:100%;object-fit:contain;border-radius:10px;" />
+          </div>
+          <div class="name">
+            <strong>ASENCIO</strong>
+            <span>RESEARCH GROUP</span>
+          </div>
+        </a>
+
+        <nav class="links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#approach">Approach</a>
+          <a href="#industries">Industries</a>
+          <a href="#about">About</a>
+          <a class="cta" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="panel hero-main">
+            <div class="kicker">Precision • Intelligence • Integrity</div>
+            <h1>AI Evaluation, Intelligence Analysis, and Legal/Policy Review</h1>
+            <p class="sub">
+              Asencio Research Group provides disciplined, high-accuracy analysis for organizations that need trustworthy outputs.
+              We specialize in AI response evaluation & annotation, structured intelligence assessments, and clear, defensible written reporting.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Request a consultation</a>
+              <a class="btn" href="#services">View services</a>
+            </div>
+          </div>
+
+          <aside class="panel hero-side" aria-label="Highlights">
+            <div class="statgrid">
+              <div class="stat">
+                <b>AI Evaluation & Annotation</b>
+                <small>Accuracy, reasoning quality, guideline compliance, and safety reviews.</small>
+              </div>
+              <div class="stat">
+                <b>Intelligence Analysis</b>
+                <small>Structured analytic techniques, hypothesis testing, and pattern recognition.</small>
+              </div>
+              <div class="stat">
+                <b>Legal & Policy Review</b>
+                <small>Issue spotting, argument evaluation, and policy interpretation support.</small>
+              </div>
+            </div>
+            <p class="note">Tip: Replace the icon above with your generated logo when you’re ready.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="sec-head">
+          <h2>Services</h2>
+          <p>High-precision professional services designed for model teams, compliance stakeholders, and research organizations.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="pill">AI Evaluation</div>
+            <h3>Response Ranking & QA</h3>
+            <p>Side-by-side comparisons, rubric scoring, hallucination detection, and clarity/utility assessments.</p>
+          </div>
+          <div class="card">
+            <div class="pill">Annotation</div>
+            <h3>Policy & Safety Review</h3>
+            <p>Labeling and rationale-writing for safety, reliability, tone, and instruction-following.</p>
+          </div>
+          <div class="card">
+            <div class="pill">Intelligence</div>
+            <h3>Analytic Briefs</h3>
+            <p>Structured briefs, key judgments, confidence ratings, and evidence-based support summaries.</p>
+          </div>
+          <div class="card">
+            <div class="pill">Legal/Policy</div>
+            <h3>Issue Spotting</h3>
+            <p>Identifying legal and policy issues, outlining arguments, and assessing logical sufficiency.</p>
+          </div>
+          <div class="card">
+            <div class="pill">Research</div>
+            <h3>Synthesis & Summaries</h3>
+            <p>Turning complex inputs into clear, decision-ready summaries with traceable reasoning.</p>
+          </div>
+          <div class="card">
+            <div class="pill">Documentation</div>
+            <h3>Content Quality Assurance</h3>
+            <p>Consistency checks, error spotting, style alignment, and defensibility improvements.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach">
+        <div class="sec-head">
+          <h2>Approach</h2>
+          <p>Repeatable methods that reduce bias, improve clarity, and support consistent outcomes.</p>
+        </div>
+        <div class="two">
+          <div class="panel box">
+            <h3>Structured Analytic Techniques</h3>
+            <ul>
+              <li>Hypothesis-driven analysis and alternative explanations</li>
+              <li>Evidence mapping and claim-support checks</li>
+              <li>Bias awareness and consistency enforcement</li>
+              <li>Clear rationale writing and reviewer notes</li>
+            </ul>
+          </div>
+          <div class="panel box">
+            <h3>What You Receive</h3>
+            <ul>
+              <li>Clear scoring and concise justifications</li>
+              <li>Actionable feedback for model or content improvement</li>
+              <li>Traceable reasoning and structured outputs</li>
+              <li>Professional communication and on-time delivery</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries">
+        <div class="sec-head">
+          <h2>Industries & Use Cases</h2>
+          <p>Support for teams that need precision, reliability, and defensible written analysis.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>AI / ML Model Evaluation</h3>
+            <p>Preference data, safety checks, instruction-following, and reasoning quality audits.</p>
+          </div>
+          <div class="card">
+            <h3>Legal & Policy</h3>
+            <p>Argument review, policy interpretation support, and quality assurance for written outputs.</p>
+          </div>
+          <div class="card">
+            <h3>Investigations & Intelligence</h3>
+            <p>Pattern analysis, summarization, and structured briefs to support operational decisions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="sec-head">
+          <h2>About</h2>
+          <p>Asencio Research Group is built on disciplined reasoning, high accuracy, and clear communication.</p>
+        </div>
+        <div class="panel box">
+          <p style="margin:0;color:var(--muted)">
+            We provide professional analytical services at the intersection of AI evaluation, intelligence analysis, and legal/policy review.
+            Our work is designed to be repeatable, evidence-based, and easy for stakeholders to understand.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="sec-head">
+          <h2>Contact</h2>
+          <p>Send a message to discuss scope, timelines, and the type of support you need.</p>
+        </div>
+        <div class="contact">
+          <div class="panel box">
+            <h3 style="margin-top:0">Send a message</h3>
+            <!-- This form uses mailto for simplicity. Replace with your backend (Formspree, Netlify forms, etc.) when ready. -->
+            <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us what you need help with..." required></textarea>
+              </div>
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+            <p class="note">Update the email address in the form action before publishing.</p>
+          </div>
+
+          <div class="panel box">
+            <h3 style="margin-top:0">Business details</h3>
+            <ul>
+              <li><b>Company:</b> Asencio Research Group</li>
+              <li><b>Services:</b> AI evaluation/annotation, intelligence analysis, legal & policy review</li>
+              <li><b>Hours:</b> Project-based availability</li>
+              <li><b>Location:</b> Remote / U.S.-based</li>
+            </ul>
+            <p class="note">Want a multi-page site (Home / Services / About / Contact)? I can expand this into a full website structure.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="year"></span> Asencio Research Group. All rights reserved.</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#services">Services</a>
+          <a href="#approach">Approach</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
